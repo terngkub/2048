@@ -2,26 +2,22 @@
 
 void	add_random(t_map *map)
 {
-
 	int   value;
 	int   x;
 	int   y;
-	int		random;
 	int		len;
 	int		list[map->size * map->size][2];
 
 	x = 0;
 	y = 0;
-	random = 0;
 	len = 0;
-	//n = 0;
-	value = (rand() % 10 == 1) ? 4 : 2;
+	value = (rand() % 10 == 0) ? 4 : 2; //assigning 2 or 4 as the new random
 	while (y < (int)map->size)
 	{
 		x = 0;
 		while (x < (int)map->size)
 		{
-			if (map->board[y][x] == 0)
+			if (map->board[y][x] == 0) //listing how many cases of 0 are available
 			{
 				list[len][0] = x;
 				list[len][1] = y;
@@ -33,9 +29,9 @@ void	add_random(t_map *map)
 	}
 	if (len > 0)
 	{
-		random = rand() % len;
-		x = list[random][0];
-		y = list[random][1];
+		len = rand() % len; //assigning random position
+		x = list[len][0];
+		y = list[len][1];
 		map->board[y][x] = value;
 	}
 }
