@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:31:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/06 14:41:34 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/06 14:43:56 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	print_board(t_map *map)
 		printw("\n");
 		i++;
 	}
+	printw("\n");
 }
 
 void	run_game(t_map *map)
