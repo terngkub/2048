@@ -45,6 +45,7 @@ void	run_game(t_map *map)
 		else if (ch == KEY_UP || ch == KEY_DOWN || ch == KEY_LEFT
 				|| ch == KEY_RIGHT)
 		{
+			add_random(map);
 			print_board(map);
 		}
 	}
