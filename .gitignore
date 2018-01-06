@@ -1,0 +1,6 @@
+.DS_Store
+*/libft.a
+*.swp
+*.o
+a.out
+game_2048
