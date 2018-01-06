@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/06 12:18:38 by nkamolba          #+#    #+#              #
-#    Updated: 2018/01/06 12:41:26 by nkamolba         ###   ########.fr        #
+#    Updated: 2018/01/06 14:39:52 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAG = -Wall -Wextra -Werror
 LIB = -Llibft -lft -lncurses
 LIBFT = libft/libft.a
 
-FILE = main.c create_map.c
+FILE = main.c create_map.c run_game.c
 
 FILE_O = $(FILE:%.c=%.o)
 
