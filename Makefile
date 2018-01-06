@@ -11,11 +11,11 @@
 # **************************************************************************** #
 
 NAME = game_2048
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -g3
 LIB = -Llibft -lft -lncurses
 LIBFT = libft/libft.a
 
-FILE = main.c create_map.c run_game.c
+FILE = main.c create_map.c run_game.c add_random.c
 
 FILE_O = $(FILE:%.c=%.o)
 

@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include <ncurses.h>
+# include <time.h>
 
 enum			e_const
 {
@@ -31,5 +32,6 @@ typedef struct	s_map
 
 t_map			*create_map(size_t size);
 void			run_game(t_map* map);
+void			add_random(t_map *map);
 
 #endif
