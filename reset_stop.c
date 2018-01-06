@@ -1,52 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   reset_stop.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/06 11:59:56 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/06 15:42:23 by nkamolba         ###   ########.fr       */
+/*   Created: 2018/01/06 14:53:47 by nkamolba          #+#    #+#             */
+/*   Updated: 2018/01/06 14:57:27 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-/*
-static void	print_2d_arr(int **arr, size_t size)
+void	reset_stop(t_map *map)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	while (i < size)
+	while (i < map->size)
 	{
 		j = 0;
-		while (j < size)
-			ft_printf("%d ", arr[i][j++]);
-		ft_printf("\n");
+		while (j < map->size)
+			map->stop[i][j++] = 0;
 		i++;
 	}
-}
-*/
-
-static void	set_screen(void)
-{
-	initscr();
-	noecho();
-	cbreak();
-	keypad(stdscr, 1);
-}
-
-int			main(void)
-{
-	t_map	*map;
-
-	if (!(map = create_map(4)))
-		return (1);
-	set_screen();
-	run_game(map);
-	endwin();
-	clean_map(map);
-	return (0);
 }

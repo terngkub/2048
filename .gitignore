@@ -2,5 +2,6 @@
 */libft.a
 *.swp
 *.o
+*.dSYM
 a.out
 game_2048

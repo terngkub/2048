@@ -1,52 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_lost.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/06 11:59:56 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/06 15:42:23 by nkamolba         ###   ########.fr       */
+/*   Created: 2018/01/06 15:44:10 by nkamolba          #+#    #+#             */
+/*   Updated: 2018/01/06 15:44:24 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-/*
-static void	print_2d_arr(int **arr, size_t size)
+int		check_lost(t_map *map)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	while (i < size)
+	while (i < map->size)
 	{
 		j = 0;
-		while (j < size)
-			ft_printf("%d ", arr[i][j++]);
-		ft_printf("\n");
+		while (j < map->size)
+			if (map->board[i][j] == 0)
+				return (0);
 		i++;
 	}
-}
-*/
-
-static void	set_screen(void)
-{
-	initscr();
-	noecho();
-	cbreak();
-	keypad(stdscr, 1);
-}
-
-int			main(void)
-{
-	t_map	*map;
-
-	if (!(map = create_map(4)))
-		return (1);
-	set_screen();
-	run_game(map);
-	endwin();
-	clean_map(map);
-	return (0);
+	mvprintw(6, 0, "You're lost. Please press ESC to end the program.");
+	while (1)
+		if (getch() == 27)
+			break;
+	return (1);
 }
