@@ -26,10 +26,11 @@ static void	print_board(t_map *map)
 		j = 0;
 		while (j < map->size)
 		{
-			if (map->board[i][j++] == 0)
+			if (map->board[i][j] == 0)
 				printw("%*s ", width, ".");
 			else
-				printw("%*d ", width, map->board[i][j++]);
+				printw("%*d ", width, map->board[i][j]);
+			j++;
 		}
 		printw("\n");
 		i++;
@@ -53,6 +54,7 @@ void	run_game(t_map *map)
 		{
 			erase();
 			reset_stop(map);
+			add_random(map);
 			map->score++;
 			map->best_score += 500;
 			check_win(map);
