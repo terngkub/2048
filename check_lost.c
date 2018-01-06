@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 15:44:10 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/06 15:44:24 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/06 17:28:25 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		check_lost(t_map *map)
 	{
 		j = 0;
 		while (j < map->size)
-			if (map->board[i][j] == 0)
+			if (map->board[i][j++] == 0)
 				return (0);
 		i++;
 	}
