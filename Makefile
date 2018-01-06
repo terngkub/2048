@@ -6,13 +6,14 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/06 12:18:38 by nkamolba          #+#    #+#              #
-#    Updated: 2018/01/06 12:24:41 by nkamolba         ###   ########.fr        #
+#    Updated: 2018/01/06 12:41:26 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = game_2048
 FLAG = -Wall -Wextra -Werror
 LIB = -Llibft -lft -lncurses
+LIBFT = libft/libft.a
 
 FILE = main.c create_map.c
 
