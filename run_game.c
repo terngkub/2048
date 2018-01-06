@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:31:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/06 16:07:23 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/06 17:50:26 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ void	run_game(t_map *map)
 		else if (ch == KEY_UP || ch == KEY_DOWN || ch == KEY_LEFT
 				|| ch == KEY_RIGHT)
 		{
-			erase();
 			reset_stop(map);
 			add_random(map);
 			map->score++;
 			map->best_score += 500;
+			erase();
+			print_board(map);
 			check_win(map);
 			if (check_lost(map))
 				break ;
-			print_board(map);
 		}
 	}
 }
