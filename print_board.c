@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:31:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 21:17:21 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:29:04 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,29 @@ static WINDOW	***create_window(size_t size)
 	size_t	i;
 	WINDOW	***win;
 
-	win = (WINDOW ***)malloc(sizeof(WINDOW **) * size);
+	if (!(win = (WINDOW ***)malloc(sizeof(WINDOW **) * size)))
+		return (NULL);
 	i = 0;
 	while (i < size)
 	{
-		win[i] = (WINDOW **)malloc(sizeof(WINDOW *) * size);
+		if (!(win[i] = (WINDOW **)malloc(sizeof(WINDOW *) * size)))
+			return (NULL);
 		i++;
 	}
 	return (win);
+}
+
+static void		clean_window(WINDOW ***win, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < size)
+	{
+		free(win[i]);
+		i++;
+	}
+	free(win);
 }
 
 void			print_board(t_map *map)
@@ -94,4 +109,5 @@ void			print_board(t_map *map)
 			j++;
 		}
 	}
+	clean_window(win, map->size);
 }
