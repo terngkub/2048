@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/06 12:18:38 by nkamolba          #+#    #+#              #
-#    Updated: 2018/01/07 18:32:06 by clbergon         ###   ########.fr        #
+#    Updated: 2018/01/07 20:23:21 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ HEADER = game_2048.h
 
 FILE = main.c\
 	   start_game.c\
+	   print_menu.c\
 	   create_map.c\
 	   run_game.c\
 	   print_board.c\

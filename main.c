@@ -6,11 +6,26 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:59:56 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 18:09:58 by clbergon         ###   ########.fr       */
+/*   Updated: 2018/01/07 20:40:13 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
+
+static void handle_resize(int sig)
+{
+	(void)sig;
+	endwin();
+	refresh();
+	werase(stdscr);
+	if (state == 1)
+	{
+		print_menu(choice);
+		refresh();
+	}
+	else if (state == 2)
+		print_board(map);
+}
 
 static void	set_screen(void)
 {
@@ -36,16 +51,16 @@ int			check_win_value(void)
 
 int			main(void)
 {
-	size_t	choice;
-	t_map	*map;
-
 	if (!check_win_value())
 		return (0);
 	set_screen();
+	signal(SIGWINCH, handle_resize);
+	state = 1;
 	if ((choice = start_game()))
 	{
 		if (!(map = create_map(choice)))
 			return (1);
+		state = 2;
 		run_game(map);
 		clean_map(map);
 	}

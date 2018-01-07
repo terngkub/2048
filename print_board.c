@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:31:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 19:38:56 by clbergon         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:11:35 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int			log_two(int n)
 
 static void	print_more(t_map *map)
 {
+	set_color();
 	mvprintw(1, map->size * 10 + 3, "Score to win:");
 	mvprintw(2, map->size * 10 + 7, "%d", WIN_VALUE);
 	mvprintw(4, map->size * 10 + 3, "Score:");
@@ -52,6 +53,41 @@ static void	print_more(t_map *map)
 	mvprintw((map->size - 1) * 5 + 2, map->size * 10 + 3, "ARROW : move piece");
 	mvprintw((map->size - 1) * 5 + 3, map->size * 10 + 3, "R     : replay");
 	mvprintw((map->size - 1) * 5 + 4, map->size * 10 + 3, "ESC   : exit");
+	refresh();
+	check_win(map);
+}
+
+/*
+static void	print_block(t_map *map, WINDOW ***win, size_t i, size_t j)
+{
+	size_t	width;
+
+	win[i][j] = newwin(5, 10, i * 5, j * 10);
+	wattron(win[i][j], COLOR_PAIR(log_two(map->board[i][j]) % 7 + 2));
+	if (map->board[i][j] != 0)
+	{
+		width = ft_numlen(map->board[i][j]);
+		mvwprintw(win[i][j], 2, 5 - width / 2, "%d", map->board[i][j]);
+	}
+	box(win[i][j], 0, 0);
+	wattroff(win[i][j], COLOR_PAIR(log_two(map->board[i][j]) % 7 + 2));
+	wrefresh(win[i][j++]);
+}
+*/
+
+static WINDOW	***create_window(size_t size)
+{
+	size_t	i;
+	WINDOW	***win;
+
+	win = (WINDOW ***)malloc(sizeof(WINDOW **) * size);
+	i = 0;
+	while (i < size)
+	{
+		win[i] = (WINDOW **)malloc(sizeof(WINDOW *) * size);
+		i++;
+	}
+	return (win);
 }
 
 void		print_board(t_map *map)
@@ -59,9 +95,11 @@ void		print_board(t_map *map)
 	size_t	i;
 	size_t	j;
 	size_t	width;
+	WINDOW ***win;
 
-	WINDOW * win[map->size][map->size];
-	set_color();
+	if(!(win = create_window(map->size)))
+		return ;
+	print_more(map);
 	i = -1;
 	while (++i < map->size)
 	{
@@ -78,7 +116,7 @@ void		print_board(t_map *map)
 			box(win[i][j], 0, 0);
 			wattroff(win[i][j], COLOR_PAIR(log_two(map->board[i][j]) % 7 + 2));
 			wrefresh(win[i][j++]);
+			//print_block(map, win, i, j);
 		}
 	}
-	print_more(map);
 }
