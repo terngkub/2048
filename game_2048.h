@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:43:15 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 20:23:59 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:22:10 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 enum			e_const
 {
-	WIN_VALUE = 4
+	WIN_VALUE = 2048
 };
 
 typedef struct	s_map
@@ -43,11 +43,12 @@ void			add_random(t_map *map);
 void			copy_board(int **temp, int **board, size_t size);
 int				do_direction(t_map *map, int ch);
 void			print_board(t_map *map);
-void			slide_board(int *line, t_map *map);
+void			slide_board(int *line, t_map *map, int stop);
 void			move_left(t_map *map);
 void			move_right(t_map *map);
 void			move_up(t_map *map);
 void			move_down(t_map *map);
+int				log_two(int n);
 
 int				state;
 size_t			choice;

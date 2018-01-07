@@ -6,7 +6,7 @@
 /*   By: clbergon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:08:41 by clbergon          #+#    #+#             */
-/*   Updated: 2018/01/07 19:51:26 by clbergon         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:21:40 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,12 @@ static int	find_target(int *line, int x, int stop)
 	return (x);
 }
 
-void		slide_board(int *line, t_map *map)
+void		slide_board(int *line, t_map *map, int stop)
 {
 	int		x;
 	int		t;
-	int		stop;
 
 	x = -1;
-	stop = 0;
 	while (++x < (int)map->size)
 	{
 		if (line[x] != '\0')

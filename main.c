@@ -6,13 +6,13 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:59:56 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 20:40:13 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:22:56 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-static void handle_resize(int sig)
+static void	handle_resize(int sig)
 {
 	(void)sig;
 	endwin();

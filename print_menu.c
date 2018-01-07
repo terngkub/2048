@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 20:22:43 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 20:26:54 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:18:59 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	print_menu_color(char *str, int color)
 		attroff(COLOR_PAIR(1));
 }
 
-void	print_menu(size_t choice)
+void		print_menu(size_t choice)
 {
 	erase();
 	start_color();

@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/06 12:18:38 by nkamolba          #+#    #+#              #
-#    Updated: 2018/01/07 20:23:21 by nkamolba         ###   ########.fr        #
+#    Updated: 2018/01/07 21:16:28 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ FILE = main.c\
 	   add_random.c\
 		 movement.c\
 		 slide_board.c\
-	   do_direction.c
+	   do_direction.c\
+	   log_two.c
 
 FILE_O = $(FILE:%.c=%.o)
 

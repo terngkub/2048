@@ -6,7 +6,7 @@
 /*   By: clbergon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:11:07 by clbergon          #+#    #+#             */
-/*   Updated: 2018/01/07 19:14:20 by clbergon         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:21:47 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			move_left(t_map *map)
 	x = 0;
 	while (x < (int)map->size)
 	{
-		slide_board(map->board[x], map);
+		slide_board(map->board[x], map, 0);
 		x++;
 	}
 }

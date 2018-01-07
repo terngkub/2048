@@ -6,13 +6,13 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:31:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 21:11:35 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:17:21 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-static void	set_color(void)
+static void		set_color(void)
 {
 	init_pair(2, COLOR_WHITE, COLOR_BLACK);
 	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
@@ -29,20 +29,7 @@ static void	set_color(void)
 	init_color(COLOR_RED, 1000, 500, 750);
 }
 
-int			log_two(int n)
-{
-	int		result;
-
-	result = 0;
-	while (n >= 2)
-	{
-		n /= 2;
-		result++;
-	}
-	return (result);
-}
-
-static void	print_more(t_map *map)
+static void		print_more(t_map *map)
 {
 	set_color();
 	mvprintw(1, map->size * 10 + 3, "Score to win:");
@@ -57,8 +44,7 @@ static void	print_more(t_map *map)
 	check_win(map);
 }
 
-/*
-static void	print_block(t_map *map, WINDOW ***win, size_t i, size_t j)
+static void		print_block(t_map *map, WINDOW ***win, size_t i, size_t j)
 {
 	size_t	width;
 
@@ -71,9 +57,8 @@ static void	print_block(t_map *map, WINDOW ***win, size_t i, size_t j)
 	}
 	box(win[i][j], 0, 0);
 	wattroff(win[i][j], COLOR_PAIR(log_two(map->board[i][j]) % 7 + 2));
-	wrefresh(win[i][j++]);
+	wrefresh(win[i][j]);
 }
-*/
 
 static WINDOW	***create_window(size_t size)
 {
@@ -90,14 +75,13 @@ static WINDOW	***create_window(size_t size)
 	return (win);
 }
 
-void		print_board(t_map *map)
+void			print_board(t_map *map)
 {
 	size_t	i;
 	size_t	j;
-	size_t	width;
-	WINDOW ***win;
+	WINDOW	***win;
 
-	if(!(win = create_window(map->size)))
+	if (!(win = create_window(map->size)))
 		return ;
 	print_more(map);
 	i = -1;
@@ -106,17 +90,8 @@ void		print_board(t_map *map)
 		j = 0;
 		while (j < map->size)
 		{
-			win[i][j] = newwin(5, 10, i * 5, j * 10);
-			wattron(win[i][j], COLOR_PAIR(log_two(map->board[i][j]) % 7 + 2));
-			if (map->board[i][j] != 0)
-			{
-				width = ft_numlen(map->board[i][j]);
-				mvwprintw(win[i][j], 2, 5 - width / 2, "%d", map->board[i][j]);
-			}
-			box(win[i][j], 0, 0);
-			wattroff(win[i][j], COLOR_PAIR(log_two(map->board[i][j]) % 7 + 2));
-			wrefresh(win[i][j++]);
-			//print_block(map, win, i, j);
+			print_block(map, win, i, j);
+			j++;
 		}
 	}
 }
