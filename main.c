@@ -6,47 +6,57 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:59:56 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/06 15:42:23 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 17:35:24 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-/*
-static void	print_2d_arr(int **arr, size_t size)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (j < size)
-			ft_printf("%d ", arr[i][j++]);
-		ft_printf("\n");
-		i++;
-	}
-}
-*/
-
 static void	set_screen(void)
 {
+	// Create a screen
 	initscr();
+	// Silent getch()
 	noecho();
+	// Hide cursor
+	curs_set(0);
+	// Make getch() receive one character at a time
 	cbreak();
+	// Make getch() able to receive arrow key
 	keypad(stdscr, 1);
+}
+
+int			check_win_value(void)
+{
+	int		i;
+
+	i = 2;
+	while (i <= WIN_VALUE)
+		i *= 2;
+	i /= 2;
+	if (i != WIN_VALUE)
+		return (0);
+	return (1);
 }
 
 int			main(void)
 {
+	size_t	choice;
 	t_map	*map;
 
-	if (!(map = create_map(4)))
-		return (1);
+	if (!check_win_value())
+		return (0);
+	// Set the screen config
 	set_screen();
-	run_game(map);
+	if ((choice = start_game()))
+	{
+		if (!(map = create_map(choice)))
+			return (1);
+		run_game(map);
+		// Free map structure
+		clean_map(map);
+	}
+	// Close the screen
 	endwin();
-	clean_map(map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:46:07 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/06 15:48:47 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 13:04:23 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ t_map		*create_map(size_t size)
 	if (!(map->stop = create_2d_arr(size)))
 		return (NULL);
 	map->score = 0;
-	map->best_score = 0;
+	map->highest = 0;
 	return (map);
 }
