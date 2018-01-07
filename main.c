@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:59:56 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 21:53:21 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 22:03:09 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	set_screen(void)
 	keypad(stdscr, 1);
 }
 
-int			check_win_value(void)
+static int	check_win_value(void)
 {
 	int		i;
 

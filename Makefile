@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/06 12:18:38 by nkamolba          #+#    #+#              #
-#    Updated: 2018/01/07 21:46:26 by nkamolba         ###   ########.fr        #
+#    Updated: 2018/01/07 22:10:31 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ FILE = main.c\
 	   slide_board.c\
 	   do_direction.c\
 	   log_two.c\
-	   clean_window.c
+	   clean_window.c\
+	   copy_board.c\
+	   compare_board.c
 
 FILE_O = $(FILE:%.c=%.o)
 

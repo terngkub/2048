@@ -6,51 +6,52 @@
 /*   By: clbergon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:28:08 by clbergon          #+#    #+#             */
-/*   Updated: 2018/01/07 19:15:20 by clbergon         ###   ########.fr       */
+/*   Updated: 2018/01/07 22:17:13 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-void			copy_board(int **temp, int **board, size_t size)
+static void			move_left(t_map *map)
 {
-	size_t	i;
-	size_t	j;
+	int		x;
 
-	i = 0;
-	while (i < size)
+	x = 0;
+	while (x < (int)map->size)
 	{
-		j = 0;
-		while (j < size)
-		{
-			temp[i][j] = board[i][j];
-			j++;
-		}
-		i++;
+		slide_board(map->board[x], map, 0);
+		x++;
 	}
 }
 
-int				compare_board(int **temp, int **board, size_t size)
+static void			move_right(t_map *map)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (j < size)
-		{
-			if (temp[i][j] != board[i][j])
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
+	rotate_board(map);
+	rotate_board(map);
+	move_left(map);
+	rotate_board(map);
+	rotate_board(map);
 }
 
-int				do_direction(t_map *map, int ch)
+static void			move_down(t_map *map)
+{
+	rotate_board(map);
+	rotate_board(map);
+	rotate_board(map);
+	move_left(map);
+	rotate_board(map);
+}
+
+static void			move_up(t_map *map)
+{
+	rotate_board(map);
+	move_left(map);
+	rotate_board(map);
+	rotate_board(map);
+	rotate_board(map);
+}
+
+int					do_direction(t_map *map, int ch)
 {
 	t_map	*temp_map;
 

@@ -6,13 +6,13 @@
 /*   By: clbergon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:11:07 by clbergon          #+#    #+#             */
-/*   Updated: 2018/01/07 21:21:47 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 22:17:37 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-static void		rotate_board(t_map *map)
+void		rotate_board(t_map *map)
 {
 	int		i;
 	int		j;
@@ -36,43 +36,4 @@ static void		rotate_board(t_map *map)
 		}
 		i++;
 	}
-}
-
-void			move_left(t_map *map)
-{
-	int		x;
-
-	x = 0;
-	while (x < (int)map->size)
-	{
-		slide_board(map->board[x], map, 0);
-		x++;
-	}
-}
-
-void			move_right(t_map *map)
-{
-	rotate_board(map);
-	rotate_board(map);
-	move_left(map);
-	rotate_board(map);
-	rotate_board(map);
-}
-
-void			move_down(t_map *map)
-{
-	rotate_board(map);
-	rotate_board(map);
-	rotate_board(map);
-	move_left(map);
-	rotate_board(map);
-}
-
-void			move_up(t_map *map)
-{
-	rotate_board(map);
-	move_left(map);
-	rotate_board(map);
-	rotate_board(map);
-	rotate_board(map);
 }
