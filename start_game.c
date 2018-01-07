@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 11:45:20 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 20:27:02 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:49:51 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ size_t		start_game(void)
 {
 	int		ch;
 
-	choice = 4;
-	print_menu(choice);
+	g_choice = 4;
+	print_menu(g_choice);
 	while (1)
 	{
 		ch = getch();
-		if (ch == KEY_DOWN && choice < 5)
-			choice++;
-		else if (ch == KEY_UP && choice > 4)
-			choice--;
+		if (ch == KEY_DOWN && g_choice < 5)
+			g_choice++;
+		else if (ch == KEY_UP && g_choice > 4)
+			g_choice--;
 		else if (ch == 27)
 		{
-			choice = 0;
+			g_choice = 0;
 			break ;
 		}
 		else if (ch == 10)
 			break ;
-		print_menu(choice);
+		print_menu(g_choice);
 	}
-	return (choice);
+	return (g_choice);
 }

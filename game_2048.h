@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:43:15 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 21:48:18 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:54:18 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 enum			e_const
 {
-	WIN_VALUE = 8
+	WIN_VALUE = 2048
 };
 
 typedef struct	s_map
@@ -50,8 +50,8 @@ void			move_down(t_map *map);
 int				log_two(int n);
 void			clean_window(WINDOW ***win, size_t size);
 
-int				state;
-size_t			choice;
-t_map			*map;
+int				g_state;
+size_t			g_choice;
+t_map			*g_map;
 
 #endif

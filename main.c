@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:59:56 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 21:22:56 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:53:21 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	handle_resize(int sig)
 	endwin();
 	refresh();
 	werase(stdscr);
-	if (state == 1)
+	if (g_state == 1)
 	{
-		print_menu(choice);
+		print_menu(g_choice);
 		refresh();
 	}
-	else if (state == 2)
-		print_board(map);
+	else if (g_state == 2)
+		print_board(g_map);
 }
 
 static void	set_screen(void)
@@ -55,14 +55,14 @@ int			main(void)
 		return (0);
 	set_screen();
 	signal(SIGWINCH, handle_resize);
-	state = 1;
-	if ((choice = start_game()))
+	g_state = 1;
+	if ((g_choice = start_game()))
 	{
-		if (!(map = create_map(choice)))
+		if (!(g_map = create_map(g_choice)))
 			return (1);
-		state = 2;
-		run_game(map);
-		clean_map(map);
+		g_state = 2;
+		run_game(g_map);
+		clean_map(g_map);
 	}
 	endwin();
 	return (0);
