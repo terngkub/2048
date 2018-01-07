@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:43:15 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 21:45:12 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:48:18 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "libft/libft.h"
 # include <ncurses.h>
-# include <time.h>
 
 enum			e_const
 {
