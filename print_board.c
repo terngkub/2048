@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:31:31 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 21:29:04 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:45:22 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void		set_color(void)
 	init_color(COLOR_RED, 1000, 500, 750);
 }
 
-static void		print_more(t_map *map)
+static int		print_more(t_map *map)
 {
 	set_color();
 	mvprintw(1, map->size * 10 + 3, "Score to win:");
@@ -42,6 +42,9 @@ static void		print_more(t_map *map)
 	mvprintw((map->size - 1) * 5 + 4, map->size * 10 + 3, "ESC   : exit");
 	refresh();
 	check_win(map);
+	if (check_lost(map))
+		return (0);
+	return (1);
 }
 
 static void		print_block(t_map *map, WINDOW ***win, size_t i, size_t j)
@@ -77,28 +80,16 @@ static WINDOW	***create_window(size_t size)
 	return (win);
 }
 
-static void		clean_window(WINDOW ***win, size_t size)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < size)
-	{
-		free(win[i]);
-		i++;
-	}
-	free(win);
-}
-
-void			print_board(t_map *map)
+int				print_board(t_map *map)
 {
 	size_t	i;
 	size_t	j;
 	WINDOW	***win;
+	int		ret;
 
 	if (!(win = create_window(map->size)))
-		return ;
-	print_more(map);
+		return (0);
+	ret = print_more(map);
 	i = -1;
 	while (++i < map->size)
 	{
@@ -110,4 +101,5 @@ void			print_board(t_map *map)
 		}
 	}
 	clean_window(win, map->size);
+	return (ret);
 }

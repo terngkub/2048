@@ -6,7 +6,7 @@
 /*   By: clbergon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 18:30:32 by clbergon          #+#    #+#             */
-/*   Updated: 2018/01/07 18:30:36 by clbergon         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:40:53 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ void		run_game(t_map *map)
 			if (do_direction(map, ch))
 				add_random(map);
 			print_board(map);
-			check_win(map);
-			if (check_lost(map))
-				break ;
 		}
 	}
 }

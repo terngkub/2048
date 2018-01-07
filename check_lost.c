@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 15:44:10 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 18:46:21 by clbergon         ###   ########.fr       */
+/*   Updated: 2018/01/07 21:41:30 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	print_lost(t_map *map)
 		mvprintw(7, map->size * 10 + 3, "You lost!");
 	mvprintw(8, map->size * 10 + 3, "Press ESC to end the program");
 	mvprintw(9, map->size * 10 + 3, "Press 'R' to play again.");
+	refresh();
 }
 
 static int	check_full(t_map *map)
@@ -58,8 +59,5 @@ int			check_lost(t_map *map)
 		return (0);
 	}
 	print_lost(map);
-	while (1)
-		if (getch() == 27)
-			break ;
 	return (1);
 }
