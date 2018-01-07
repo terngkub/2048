@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/06 12:18:38 by nkamolba          #+#    #+#              #
-#    Updated: 2018/01/07 17:38:23 by nkamolba         ###   ########.fr        #
+#    Updated: 2018/01/07 18:32:06 by clbergon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,15 @@ FILE = main.c\
 	   start_game.c\
 	   create_map.c\
 	   run_game.c\
+	   print_board.c\
 	   reset_stop.c\
 	   check_win.c\
 	   check_lost.c\
 	   clean_map.c\
-		 add_random.c\
-		 do_direction.c
+	   add_random.c\
+		 movement.c\
+		 slide_board.c\
+	   do_direction.c
 
 FILE_O = $(FILE:%.c=%.o)
 

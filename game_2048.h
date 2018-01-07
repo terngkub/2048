@@ -41,5 +41,11 @@ void			clean_map(t_map *map);
 void			add_random(t_map *map);
 void			copy_board(int **temp, int **board, size_t size);
 int				do_direction(t_map *map, int ch);
+void	print_board(t_map *map);
+void		slide_board(int *line, t_map *map);
+void		move_left(t_map *map);
+void		move_right(t_map *map);
+void		move_up(t_map *map);
+void		move_down(t_map *map);
 
 #endif

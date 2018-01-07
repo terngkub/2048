@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 11:59:56 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 17:35:24 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 18:09:58 by clbergon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,10 @@
 
 static void	set_screen(void)
 {
-	// Create a screen
 	initscr();
-	// Silent getch()
 	noecho();
-	// Hide cursor
 	curs_set(0);
-	// Make getch() receive one character at a time
 	cbreak();
-	// Make getch() able to receive arrow key
 	keypad(stdscr, 1);
 }
 
@@ -46,17 +41,14 @@ int			main(void)
 
 	if (!check_win_value())
 		return (0);
-	// Set the screen config
 	set_screen();
 	if ((choice = start_game()))
 	{
 		if (!(map = create_map(choice)))
 			return (1);
 		run_game(map);
-		// Free map structure
 		clean_map(map);
 	}
-	// Close the screen
 	endwin();
 	return (0);
 }

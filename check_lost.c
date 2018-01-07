@@ -6,15 +6,24 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 15:44:10 by nkamolba          #+#    #+#             */
-/*   Updated: 2018/01/07 14:20:38 by nkamolba         ###   ########.fr       */
+/*   Updated: 2018/01/07 18:46:21 by clbergon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-int		check_lost(t_map *map)
+static void	print_lost(t_map *map)
 {
-	t_map	*temp_map;
+	if (map->highest >= WIN_VALUE)
+		mvprintw(7, map->size * 10 + 3, "Game is over ! Well done ;)");
+	else
+		mvprintw(7, map->size * 10 + 3, "You lost!");
+	mvprintw(8, map->size * 10 + 3, "Press ESC to end the program");
+	mvprintw(9, map->size * 10 + 3, "Press 'R' to play again.");
+}
+
+static int	check_full(t_map *map)
+{
 	size_t	i;
 	size_t	j;
 
@@ -29,38 +38,28 @@ int		check_lost(t_map *map)
 		}
 		i++;
 	}
+	return (1);
+}
+
+int			check_lost(t_map *map)
+{
+	t_map	*temp_map;
+
+	if (!(check_full(map)))
+		return (0);
 	temp_map = create_map(map->size);
 	copy_board(temp_map->board, map->board, map->size);
-	if (do_direction(temp_map, KEY_UP))
+	if (do_direction(temp_map, KEY_UP)
+			|| (do_direction(temp_map, KEY_DOWN))
+			|| (do_direction(temp_map, KEY_LEFT))
+			|| (do_direction(temp_map, KEY_RIGHT)))
 	{
 		clean_map(temp_map);
 		return (0);
 	}
-	if (do_direction(temp_map, KEY_DOWN))
-	{
-		clean_map(temp_map);
-		return (0);
-	}
-	if (do_direction(temp_map, KEY_LEFT))
-	{
-		clean_map(temp_map);
-		return (0);
-	}
-	if (do_direction(temp_map, KEY_RIGHT))
-	{
-		clean_map(temp_map);
-		return (0);
-	}
-	if (map->highest >= WIN_VALUE)
-		mvprintw(7, map->size * 10 + 3, "Game is over ! Well done ;)");
-	else
-		// mvprintw(y, x, str) it will print string on coordinate x, y
-		mvprintw(7, map->size * 10 + 3, "You lost!");
-	mvprintw(8, map->size * 10 + 3, "Press ESC to end the program");
-	mvprintw(9, map->size * 10 + 3, "Press 'R' to play again.");
-	// wait for player to press ESC
+	print_lost(map);
 	while (1)
 		if (getch() == 27)
-			break;
+			break ;
 	return (1);
 }
