@@ -8,7 +8,7 @@
 * The objective of this project is to create a "2048" game in C language with ncurses GUI library.
 * I work on ncurses and my teammate work on the game algorithm.
 
-[!2048](/screenshot/screenshot1.png?raw=true)
+![2048](/screenshot/screenshot1.png?raw=true)
 
 ### How to run the program
 * Run make command, this will create an executable file.
@@ -29,4 +29,4 @@
 * The game records high score. You can play again or restart the game to create a new record. However, if you close the program, your highscore will be gone.
 * There are 2 levels. 5x5 for an easy one and 4x4 for a harder one.
 
-[!2048](/screenshot/screenshot2.png?raw=true)
+![2048](/screenshot/screenshot2.png?raw=true)
